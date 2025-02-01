@@ -1,0 +1,33 @@
+avikupinsky, nadav9975751
+===============================================================================
+Avi kupinsky, ID 318336070, avi.kupinsky@mail.huji.ac.il
+Nadav fucks, ID 206073108, nadav.fucks@mail.huji.ac.il
+===============================================================================
+
+
+                           Project 11 - Compilation, Continued
+                           -----------------------------------
+  
+
+Submitted Files
+---------------
+README - This file.
+JackCompiler - The executable.
+Makefile - A makefile for the project.
+JackCompiler.py - were we compile the jack.
+JackTokenizer.py - tranlsate file into tokeized vm file
+CompilationEngine.py -  commplite the translation.
+VMWriter.py - writing the vm translation 
+SymbolTable.py - creating dick for function
+Include other files required by your project, if there are any.
+
+Remarks
+-------
+* The README file must contain the following:
+- In the first line: login(s) of the author(s), 
+separated by commas and nothing else! 
+If you work alone, do not include a comma. 
+Logins should be identical to the names of your home folders and are 
+case-sensitive.
+- Name(s), email(s) and ID(s) of the project's author(s).
+- Any remarks you have about your submission.

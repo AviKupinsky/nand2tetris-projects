@@ -1,0 +1,168 @@
+// This file is part of www.nand2tetris.org
+// and the book "The Elements of Computing Systems"
+// by Nisan and Schocken, MIT Press.
+// File name: projects/12/Math.jack
+
+/**
+ * A library of commonly used mathematical functions.
+ * Note: Jack compilers implement multiplication and division using OS method calls.
+ */
+class Math {
+
+    static Array tmp;
+    static int sum;
+
+    /** Initializes the library. */
+    function void init() {
+    let tmp = Array.new(16);
+    let tmp[0] = 1;
+    let tmp[1] = 2;
+    let tmp[2] = 4;
+    let tmp[3] = 8;
+    let tmp[4] = 16;
+    let tmp[5] = 32;
+    let tmp[6] = 64;
+    let tmp[7] = 128;
+    let tmp[8] = 256;
+    let tmp[9] = 512;
+    let tmp[10] = 1024;
+    let tmp[11] = 2048;
+    let tmp[12] = 4096;
+    let tmp[13] = 8192;
+    let tmp[14] = 16384;
+    let tmp[15] = 16384 + 16384;
+    return;
+    }
+
+    /** Returns the absolute value of x. */
+    function int abs(int x) {
+        if (x < 0){
+            return -x;
+        }
+        return x;
+    }
+
+    /** Returns the product of x and y. 
+     *  When a Jack compiler detects the multiplication operator '*' in the 
+     *  program's code, it handles it by invoking this method. In other words,
+     *  the Jack expressions x*y and multiply(x,y) return the same value.
+     */
+        function int multiply(int x, int y) {
+        var int sum, shift_x, i;
+        let sum = 0;
+        let i = 0;
+        let shift_x = x;
+        if (x = 0 | y =0){
+            return 0;
+        }
+        while(i < 16){
+            if ((y & tmp[i]) = tmp[i]){
+                let sum = sum + shift_x;
+            }
+            let shift_x = shift_x + shift_x;
+            let i = i + 1;
+            }
+        return sum;
+     }
+
+
+
+    /** Returns the integer part of x/y.
+     *  When a Jack compiler detects the multiplication operator '/' in the 
+     *  program's code, it handles it by invoking this method. In other words,
+     *  the Jack expressions x/y and divide(x,y) return the same value.
+     */
+    function int divide(int x, int y) {
+        var int q, new_x, new_y, final;
+        let new_x = Math.abs(x);
+        let new_y = Math.abs(y);
+        if (new_y > new_x | new_y < 0){
+            let sum = 0;
+            return 0;
+        }
+        let q = Math.divide(new_x, new_y+new_y);
+        if(new_x-(sum) < new_y){
+			let final = q+q;
+		    }
+		else{
+		    let sum = sum + new_y;
+			let final = q+q+1;
+		    }
+		if (((x< 0) & (y > 0)) | ((x > 0) & (y < 0))){
+		    return -final;
+		    }
+		return final;
+		}
+
+    /** Returns the integer part of the square root of x. */
+	function int sqrt(int x) {
+        var int y, j, check, sum;
+        let y = 0;
+        let j = 7;
+        while( j > -1){
+            let sum = y + tmp[j];
+            let check  = Math.multiply(sum, sum);
+            if (~(check > x) & (check > 0)){
+                let y = y +tmp[j];
+            }
+            let j = j-1;
+        }
+        return y;
+    }
+
+    /** Returns the greater number. */
+    function int max(int a, int b) {
+        if (a > b){
+            return a;
+        }
+        return b;
+    }
+
+    /** Returns the smaller number. */
+    function int min(int a, int b) {
+        if (a < b){
+            return a;
+        }
+        return b;
+    }
+
+
+    function int mod (int num, int divider){
+        var int temp;
+        let temp = Math.helperForMod(num, divider);
+        return (num - sum);
+    }
+
+    function int helperForMod (int num, int divider){
+        var int q, final;
+        if (divider > num | divider < 0){
+            let sum = 0;
+            return 0;
+        }
+        let q = Math.helperForMod(num, divider+divider);
+        if(num-(sum) < divider){
+			let final = q+q;
+		}
+		else{
+		    let sum = sum + divider;
+			let final = q+q+1;
+		}
+		
+		return final;
+    }
+
+    function int pow(int num, int power){
+        var int i, sum;
+        let sum = 1;
+        let i = 1;
+        while(i < (power + 1)){
+            let sum = sum * num;
+            let i = i + 1;
+        }
+        return sum;
+    }
+
+    function int getPowerOf2(int power){
+        return tmp[power];
+    }
+}

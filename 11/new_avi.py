@@ -1,0 +1,3 @@
+avi = dict()
+
+print(avi)
